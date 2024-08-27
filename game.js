@@ -39,8 +39,14 @@ else {
 
 console.log(result)
 
+// let the user have an option to play again
 let playAgain = prompt('Do you want to go again ' + userName + ' (y/n)?')
 if (playAgain == 'y') {
     pass 
 }
+
+// loop the game until they quit
+
+
+// keep track of scores
 
