@@ -15,8 +15,8 @@ function getComputerChoice(arr) {
 
 const array = ['rock', 'paper', 'scissors'];
 
-const result = getComputerChoice(array);
-console.log(result);
+const computerChoice = getComputerChoice(array);
+console.log(computerChoice);
 
 
 // ask for user's name
@@ -26,17 +26,27 @@ let userName = prompt('Hello newcomer! What is your name?: ');
 let myChoice = prompt('Hi ' + userName + '! Please enter your response: ');
 
 
-if ((getComputerChoice == 'rock' & myChoice == 'paper')|| 
-(getComputerChoice == 'paper' & myChoice == 'scissors') ||
-(getComputerChoice == 'scissors' & myChoice == 'rock')) {
-    outcome = "You win!";
-} else if (getComputerChoice == myChoice) {
-    outcome = "It's a tie!"
+if ((computerChoice == 'rock' & myChoice == 'paper')|| 
+(computerChoice == 'paper' & myChoice == 'scissors') ||
+(computerChoice == 'scissors' & myChoice == 'rock')) {
+    result = "You win!";
+} else if (computerChoice == myChoice) {
+    result = "It's a tie!"
 }
 else {
-    outcome = "Too bad! You lost"
+    result = "Too bad! You lost"
 }
 
-console.log(outcome)
+console.log(result)
 
+// let the user have an option to play again
+let playAgain = prompt('Do you want to go again ' + userName + ' (y/n)?')
+if (playAgain == 'y') {
+    pass 
+}
+
+// loop the game until they quit
+
+
+// keep track of scores
 
