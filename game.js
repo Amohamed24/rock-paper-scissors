@@ -6,47 +6,72 @@
 // Ask if they wish to play again
 
 
-function getComputerChoice(arr) {
-    const randomChoice = Math.floor(Math.random() * arr.length);
-    // get random computer choice
-    const item = arr[randomChoice];
-    return item;
+var humanScore = 0
+var computerScore = 0
+
+let userName = prompt(`Hello newcomer! What is your name?: `);
+
+
+// Loops the game until 5 rounds are complete
+function playGame(rounds){
+    for (let i = 0; i < rounds; i++) {
+        let humanChoice = prompt(`Hi ${userName}! Please enter your choice (rock, paper, or scissors). Type q to quit: `);
+        if (humanChoice === 'q') {
+            alert(`You chose to quit the game.`)
+            break; // Exit the loop if user types q
+        }
+        
+        let computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice)
+    }
+    
+    alert(`The final score is: You: ${humanScore}, Computer: ${computerScore}. Thanks for playing!`)
 }
 
-const array = ['rock', 'paper', 'scissors'];
-
-const computerChoice = getComputerChoice(array);
-console.log(computerChoice);
-
-
-// ask for user's name
-let userName = prompt('Hello newcomer! What is your name?: ');
-
-// ask user for their response
-let myChoice = prompt('Hi ' + userName + '! Please enter your response: ');
-
-
-if ((computerChoice == 'rock' & myChoice == 'paper')|| 
-(computerChoice == 'paper' & myChoice == 'scissors') ||
-(computerChoice == 'scissors' & myChoice == 'rock')) {
-    result = "You win!";
-} else if (computerChoice == myChoice) {
-    result = "It's a tie!"
-}
-else {
-    result = "Too bad! You lost"
+// Gets a random choice from computer
+function getComputerChoice() {
+    const choices = ['rock', 'paper', 'scissors']
+    const computerChoice = choices[Math.floor(Math.random() * choices.length)]
+    return computerChoice;
+    
 }
 
-console.log(result)
 
-// let the user have an option to play again
-let playAgain = prompt('Do you want to go again ' + userName + ' (y/n)?')
-if (playAgain == 'y') {
-    pass 
+// Play the game a single round
+function playRound(humanChoice, computerChoice){
+    // Loops until a valid choice is made
+    while (humanChoice != 'paper' && humanChoice != 'rock' && humanChoice != 'scissors'){
+        alert(humanChoice + ' is not an appropriate response.')
+        humanChoice = prompt(`${userName}, please type either 'rock', 'paper', 'scissors'`)
+
+        // Checks is user quit
+        if (humanChoice === 'q') {
+            alert(`You chose to quit the game.`)
+            return;
+        }
+    }
+
+    alert(`You selected ${humanChoice}`)
+    alert(`The computer chose ${computerChoice}`)
+
+    // Checks if the user won, lost or drawed
+    if ((computerChoice == 'rock' && humanChoice == 'paper')|| 
+        (computerChoice == 'paper' && humanChoice == 'scissors') ||
+        (computerChoice == 'scissors' && humanChoice == 'rock')) {
+            result = "You win!";
+            humanScore++; // adds 1 to the previous score
+        } else if (computerChoice == humanChoice) {
+            result = "It's a tie!"
+        }
+        else {
+            result = `You lose! ${computerChoice} beats ${humanChoice}.`
+            computerScore++;
+        }
+
+    // Track
+    alert(`Current score - You: ${humanScore}, Computer: ${computerScore}`)
 }
 
-// loop the game until they quit
 
-
-// keep track of scores
-
+// You play 5 rounds
+playGame(5)
